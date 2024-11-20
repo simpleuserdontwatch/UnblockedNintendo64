@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#000000">
+  <title>Nintendo 64 Games</title>
+</head>
+<body>
+  <video width="100%" height="100%" muted playsinline autoplay id="start">
+    <source src="n64bootup.mp4">
+    Video not supported :(
+  </video>
+  <script>
+      var video = document.getElementsByTagName('video')[0];
+
+      function fade(element) {
+          var op = 1;  // initial opacity
+          var timer = setInterval(function () {
+              if (op <= 0.00001){
+                  clearInterval(timer);
+                  element.style.display = 'none';
+              }
+              element.style.opacity = op;
+              element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+              op -= op * 0.1;
+          }, 10);
+      }
+    
+      video.onended = function(e) {
+        fade(video)
+      };
+  </script>
+  <div id="snow-container"></div>
+  <script>
+    // Get the snow container
+    const container = document.getElementById('snow-container');
+
+    // Function to create a snowflake
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = `${Math.random() * 100}%`;
+      container.appendChild(snowflake);
+
+      // Remove snowflake after it falls off the screen
+      const duration = Math.random() * 5000 + 3000; // Random duration between 3s and 8s
+      setTimeout(() => {
+        container.removeChild(snowflake);
+      }, duration);
+      
+    }
+
+    // Create snowflakes at regular intervals with randomized delay
+    function generateSnowfall() {
+      createSnowflake();
+      setTimeout(generateSnowfall, Math.random() * 2000); // Random delay between 0 and 2 seconds
+    }
+
+    // Start generating snowfall
+    generateSnowfall();
+  </script>
+  <header>
+    <h3>Unblocked Nintendo 64 Games collection</h3>
+  </header>
+  <p>Welcome to collection of some Nintendo 64 Games!</p>
+  <p>Which are unblocked, meaning you can play them at school!</p>
+  <p>Not so many games... but you can make a game request in <replit>replit</replit> ;)</p>
+  <a href="pages/supermario64.html"><img src="banners/sm64.jpg">Super Mario 64</a><br>
+  <a href="pages/PaperMario.html"><img src="banners/papermario.jpg">Paper Mario</a><br>
+  <a href="pages/BustAMove3.html"><img src="banners/bustamove3.jpg">Bust-A-Move 3 DX</a><br>
+  <a href="pages/BustAMove2.html"><img src="banners/bustamove2.jpg">Bust-A-Move 2 - Arcade Edition</a><br>
+  <a href="pages/BustAMove.html"><img src="banners/bustamove1.jpg">Bust-A-Move '99</a><br>
+  <a href="pages/Doom64.html"><img src="banners/doom.jpg">Doom 64</a><br>
+  <a href="pages/DonkeyKong64.html"><img src="banners/donkeykong.jpg">Donkey Kong 64</a><br>
+  <a href="pages/DiddyKongRacing.html"><img src="banners/diddykongracing.jpg">Diddy Kong Racing</a><br>
+  <a href="pages/MarioKart64.html"><img src="banners/mariokart.jpg">Mario Kart 64</a><br>
+  <a href="pages/AnimalForest.html"><img src="banners/doubutsu_no_mori.jpg">Doubustu no Mori/Animal Forest (Sadly, doesn't work)</a><br>
+  <a href="pages/Goldeneye.html"><img src="banners/goldeneye.jpg">GoldenEye 007</a><br>
+  <a href="pages/Bomberman.html"><img src="banners/bomberman.jpg">BomberMan 64 (Japan)</a><br>
+  <a href="/n64/">ROMS directory</a><br>
+  <p>Powered by emulator.js</p>
+  <a href="lite.html">Lite Page</a>
+</body>
+</html>
